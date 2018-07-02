@@ -6,7 +6,8 @@ import {
   Typography,
   Toolbar,
   withStyles,
-  Drawer
+  Drawer,
+  Hidden
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 
@@ -46,15 +47,6 @@ class NavBar extends React.Component {
     const { classes } = this.props;
     const { openDrawer } = this.state;
 
-    const buttonList = (
-      <div className={classes.fullWidth}>
-        <Button color="inherit" className={classes.button}>Sign Up</Button>
-        <Button color="inherit" className={classes.button}>Log In</Button>
-        <Button color="inherit" className={classes.button}>Profile</Button>
-        <Button color="inherit" className={classes.button}>Log Out</Button>
-      </div>
-    );
-
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -62,11 +54,17 @@ class NavBar extends React.Component {
             <Typography variant="title" className={classes.title} color="inherit">
               ChatApp
             </Typography>
-            <IconButton color="inherit" onClick={this.handleDrawerOpen}><Menu /></IconButton>
-            <Button color="inherit" className={classes.button}>Sign Up</Button>
-            <Button color="inherit" className={classes.button}>Log In</Button>
-            <Button color="inherit" className={classes.button}>Profile</Button>
-            <Button color="inherit" className={classes.button}>Log Out</Button>
+            <Hidden mdUp>
+              <IconButton color="inherit" onClick={this.handleDrawerOpen}>
+                <Menu />
+              </IconButton>
+            </Hidden>
+            <Hidden smDown>
+              <Button color="inherit" className={classes.button}>Sign Up</Button>
+              <Button color="inherit" className={classes.button}>Log In</Button>
+              <Button color="inherit" className={classes.button}>Profile</Button>
+              <Button color="inherit" className={classes.button}>Log Out</Button>
+            </Hidden>
           </Toolbar>
         </AppBar>
         <Drawer open={openDrawer} onClose={this.handleDrawerClose}>
