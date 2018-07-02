@@ -7,9 +7,13 @@ import {
   Toolbar,
   withStyles,
   Drawer,
-  Hidden
+  Hidden,
+  List,
+  ListItem,
+  ListItemText
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 
 const styles = {
   root: {
@@ -21,7 +25,7 @@ const styles = {
   button: {
 
   },
-  fullWidth: {
+  list: {
     width: '250px'
   }
 };
@@ -60,10 +64,20 @@ class NavBar extends React.Component {
               </IconButton>
             </Hidden>
             <Hidden smDown>
-              <Button color="inherit" className={classes.button}>Sign Up</Button>
-              <Button color="inherit" className={classes.button}>Log In</Button>
-              <Button color="inherit" className={classes.button}>Profile</Button>
-              <Button color="inherit" className={classes.button}>Log Out</Button>
+
+              <Button component={Link} to="/register" color="inherit" className={classes.button}>
+                Register
+              </Button>
+              <Button component={Link} to="/login" color="inherit" className={classes.button}>
+                Log In
+              </Button>
+              <Button component={Link} to="/profile" color="inherit" className={classes.button}>
+                Profile
+              </Button>
+              <Button color="inherit" className={classes.button}>
+                Log Out
+              </Button>
+
             </Hidden>
           </Toolbar>
         </AppBar>
@@ -74,10 +88,22 @@ class NavBar extends React.Component {
             onClick={this.handleDrawerClose}
             onKeyDown={this.handleDrawerClose}
           >
-            <Button color="inherit" className={classes.button}>Sign Up</Button>
-            <Button color="inherit" className={classes.button}>Log In</Button>
-            <Button color="inherit" className={classes.button}>Profile</Button>
-            <Button color="inherit" className={classes.button}>Log Out</Button>
+            <List>
+              <div className={classes.list}>
+                <ListItem button component={Link} to="/register">
+                  <ListItemText primary="Register"/>
+                </ListItem>
+                <ListItem button component={Link} to="/login">
+                  <ListItemText primary="Log In"/>
+                </ListItem>
+                <ListItem button component={Link} to="/profile">
+                  <ListItemText primary="Profile"/>
+                </ListItem>
+                <ListItem button>
+                  <ListItemText primary="Log Out"/>
+                </ListItem>
+              </div>
+            </List>
           </div>
 
         </Drawer>
