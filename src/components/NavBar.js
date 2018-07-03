@@ -48,7 +48,7 @@ class NavBar extends React.Component {
   }
   
   render() {
-    const { classes } = this.props;
+    const { classes, onSignOut } = this.props;
     const { openDrawer } = this.state;
 
     return (
@@ -74,7 +74,7 @@ class NavBar extends React.Component {
               <Button component={Link} to="/profile" color="inherit" className={classes.button}>
                 Profile
               </Button>
-              <Button color="inherit" className={classes.button}>
+              <Button onClick={onSignOut} color="inherit" className={classes.button}>
                 Log Out
               </Button>
 
@@ -99,7 +99,7 @@ class NavBar extends React.Component {
                 <ListItem button component={Link} to="/profile">
                   <ListItemText primary="Profile"/>
                 </ListItem>
-                <ListItem button>
+                <ListItem onClick={onSignOut} button>
                   <ListItemText primary="Log Out"/>
                 </ListItem>
               </div>
