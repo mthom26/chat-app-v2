@@ -16,7 +16,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <NavBar onSignOut={this.onSignOut}/>
+      <NavBar onSignOut={this.onSignOut} />
     )
   }
 }

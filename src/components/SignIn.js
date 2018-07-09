@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
 import { FormGroup } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 import { auth } from '../firebase';
+
+import { login } from '../store/actions/auth';
 
 class SignIn extends React.Component {
   constructor() {
@@ -16,9 +19,8 @@ class SignIn extends React.Component {
   }
 
   onSignIn(email, password) {
-    auth.doSignIn(email, password)
-      .then(authUser => console.log(authUser))
-      .catch(error => console.log(error));
+    const data = { email, password };
+    this.props.onLogIn(data);
   }
 
   render() {
@@ -33,4 +35,16 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  onLogIn: (data) => dispatch(login(data))
+});
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.currentUser.user,
+    isPending: state.currentUser.isPending,
+    error: state.currentUser.error
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
