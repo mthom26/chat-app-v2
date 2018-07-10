@@ -32,5 +32,7 @@ export const register = (data) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+  // TODO Add PENDING, SUCCESS, FAIL handling
   dispatch({ type: LOG_OUT });
+  auth.doSignOut();
 };

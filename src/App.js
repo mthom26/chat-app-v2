@@ -7,6 +7,8 @@ import Header from './containers/Header';
 import Register from './components/Register';
 import SignIn from './components/SignIn';
 
+import withAuthentication from './hocs/withAuthentication';
+
 class App extends Component {
   render() {
     return (
@@ -39,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuthentication(App);
