@@ -1,7 +1,11 @@
 import {
   GET_USER_PENDING,
   GET_USER_SUCCESS,
-  GET_USER_FAIL
+  GET_USER_FAIL,
+  CREATE_USER_PENDING,
+  CREATE_USER_SUCCESS,
+  CREATE_USER_FAIL,
+  LOG_OUT
 } from '../actionTypes';
 
 const defaultState = {
@@ -18,6 +22,14 @@ export const currentUser = (state = defaultState, action) => {
       return { ...state, user: action.payload, isPending: false };
     case GET_USER_FAIL:
       return { ...state, error: action.payload, isPending: false };
+    case CREATE_USER_PENDING:
+      return { ...state, isPending: true };
+    case CREATE_USER_SUCCESS:
+      return { ...state, user: action.payload, isPending: false };
+    case CREATE_USER_FAIL:
+      return { ...state, error: action.payload, isPending: false };
+    case LOG_OUT:
+      return { ...state, user: {} };
     default:
       return state;
   }

@@ -1,24 +1,24 @@
 import React, { Fragment } from 'react';
 import { FormGroup } from '@material-ui/core';
+import { connect } from 'react-redux';
 
-import { auth } from '../firebase';
+import { register } from '../store/actions/auth';
 
 class Register extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      email: '',
-      password: ''
+      email: 'testnoob@testmail.com',
+      password: 'password'
     };
 
     this.onRegister = this.onRegister.bind(this);
   }
 
   onRegister(email, password) {
-    auth.doCreateUser(email, password)
-      .then(authUser => console.log(authUser))
-      .catch(error => console.log(error));
+    const data = { email, password };
+    this.props.onRegister(data);
   }
 
   render() {
@@ -33,4 +33,16 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+const mapDispatchToProps = (dispatch) => ({
+  onRegister: (data) => dispatch(register(data))
+});
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.currentUser.user,
+    isPending: state.currentUser.isPending,
+    error: state.currentUser.error
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
