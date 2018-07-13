@@ -5,7 +5,8 @@ import {
   CREATE_USER_PENDING,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAIL,
-  LOG_OUT
+  LOG_OUT,
+  SET_USER
 } from '../actionTypes';
 
 const defaultState = {
@@ -30,6 +31,8 @@ export const currentUser = (state = defaultState, action) => {
       return { ...state, error: action.payload, isPending: false };
     case LOG_OUT:
       return { ...state, user: {} };
+    case SET_USER:
+      return { ...state, user: action.payload };
     default:
       return state;
   }

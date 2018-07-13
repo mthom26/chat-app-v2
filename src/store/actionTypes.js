@@ -6,4 +6,6 @@ export const CREATE_USER_PENDING = 'CREATE_USER_PENDING';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAIL = 'CREATE_USER_FAIL';
 
+export const SET_USER = 'SET_USER';
+
 export const LOG_OUT = 'LOG_OUT';

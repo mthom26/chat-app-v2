@@ -5,7 +5,8 @@ import {
   CREATE_USER_PENDING,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAIL,
-  LOG_OUT
+  LOG_OUT,
+  SET_USER
 } from '../actionTypes';
 import { auth } from '../../firebase';
 
@@ -29,6 +30,15 @@ export const register = (data) => (dispatch) => {
     .catch(error => {
       dispatch({ type: CREATE_USER_FAIL, payload: error });
     });
+};
+
+/*
+  setUser sets a user immediately with an already existing authUser
+  object. This is for setting the user on App startup (firebase 
+  persistent login)
+*/
+export const setUser = (authUser) => (dispatch) => {
+  dispatch({ type: SET_USER, payload: authUser });
 };
 
 export const logout = () => (dispatch) => {
