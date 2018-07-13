@@ -1,34 +1,28 @@
 import React, { Fragment } from 'react';
-import { FormGroup } from '@material-ui/core';
 import { connect } from 'react-redux';
 
 import { register } from '../store/actions/auth';
+import StandardForm from '../components/StandardForm';
 
 class Register extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      email: 'testnoob@testmail.com',
-      password: 'password'
-    };
-
+  constructor(props) {
+    super(props);
+    
     this.onRegister = this.onRegister.bind(this);
   }
 
-  onRegister(email, password) {
-    const data = { email, password };
+  onRegister(data) {
     this.props.onRegister(data);
   }
 
   render() {
-    const { email, password } = this.state;
-
     return (
-      <Fragment>
-        <p>form will go here!</p>
-        <button onClick={() => this.onRegister(email, password)}>Register</button>
-      </Fragment>
+      <StandardForm
+        showName
+        showEmail
+        showPassword
+        onSubmit={this.onRegister}
+      />
     );
   }
 }

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'typeface-roboto';
 
 import Header from './containers/Header';
-import Register from './components/Register';
+import Register from './containers/Register';
 import SignIn from './components/SignIn';
 
 import withAuthentication from './hocs/withAuthentication';
