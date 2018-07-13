@@ -5,7 +5,7 @@ import 'typeface-roboto';
 
 import Header from './containers/Header';
 import Register from './containers/Register';
-import SignIn from './components/SignIn';
+import LogIn from './containers/LogIn';
 
 import withAuthentication from './hocs/withAuthentication';
 
@@ -23,7 +23,7 @@ class App extends Component {
           <Route path="/login" render={() => (
             <div>
               <h2>Log In</h2>
-              <SignIn />
+              <LogIn />
             </div>
           )}/>
           <Route path="/register" render={() => (
